@@ -1,0 +1,19 @@
+{
+  "name": "tallybot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/better-sqlite3": "^5.4.0",
+    "@youka/lyrics": "^0.2.4",
+    "better-sqlite3": "^6.0.1",
+    "discord.js": "^11.5.1",
+    "lyrics-finder": "^19.0.21",
+    "yt-search": "^1.1.2"
+  }
+}
