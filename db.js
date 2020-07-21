@@ -14,9 +14,9 @@ function convertMS(ms) {
 
   let result = pad(h) + ' hours, ' + pad(m) + ' minutes';
   return result;
-};
+}
 
-db.prepare(`
+db.exec(`
 	create table if not exists songs (
 		id integer primary key autoincrement,
 		name text not null,
@@ -26,23 +26,19 @@ db.prepare(`
 		thumb text default null,
 		author text default null,
 		lyrics text default null
-	)
-`).run();
-db.prepare(`
+	);
 	create table if not exists rates (
 		id text not null,
 		songid integer not null,
 		rating integer default 5,
 		primary key (id, songid)
-	)
-`).run();
-db.prepare(`
+	);
 	create table if not exists votes (
 		id text not null,
 		songid integer not null,
 		date integer not null
-	)
-`).run();
+	);
+`);
 
 function getSong(id) {
 	if(!id) return false;
