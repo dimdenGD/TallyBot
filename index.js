@@ -43,7 +43,7 @@ bot.on("message", msg => {
             msg.channel.send("dimden");
         }
         if(msg.content.includes("topic pls")) {
-            let collector = new Discord.MessageCollector(msg.channel, m => m.author.bot, {time: 5000});
+            let collector = new Discord.MessageCollector(msg.channel, m => m.author.id === "476797114589118464", {time: 5000});
             let topicpls = false;
             collector.on("collect", () => {
                 topicpls = true;

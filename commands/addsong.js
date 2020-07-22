@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
-const yts = require('yt-search');
+const yts = require('ytsr');
+const config = require("../config.json");
 const searchlyrics = require("@youka/lyrics");
+// https://www.googleapis.com/youtube/v3/search?part=id&q=tally%20hall%20spring%20and%20storm&key=[YOUR_API_KEY]
 
 module.exports.run = async (msg, args, bot, db, isAdmin) => {
 	if(!isAdmin) throw "You're not allowed to use this command!";
@@ -65,10 +67,10 @@ module.exports.run = async (msg, args, bot, db, isAdmin) => {
 	message = await msg.channel.send(embed);
 	if(!noinfo) {
 		let got = false;
-		yts(`${author} ${name}`, (err, r) => {
+		yts(`${author} ${name}`, {key: config.youtube_key}, (err, r) => {
 			if(got) return;
 			got = true;
-			let url = r.videos[0].url;
+			let url = r.items[0].link;
 			link = true;
 			db.editSong(song, "link", url);
 			if(message) message.edit(`[UPDATE]: Found link${lyrics ? " & lyrics":""}!`);
@@ -78,7 +80,7 @@ module.exports.run = async (msg, args, bot, db, isAdmin) => {
 			lyrics = true;
 			db.editSong(song, "lyrics", i);
 			if(message) message.edit(`[UPDATE]: Found lyrics${link ? " & link":""}!`)
-		});
+		}).catch(() => {});
 	}
 };
 module.exports.aliases = ["add-song", "createsong", "create-song"];

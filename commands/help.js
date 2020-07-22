@@ -10,8 +10,8 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
 "`th!hiddeninthesand [page]` or `th!hits [page]` - search page in hiddeninthesand.com/wiki\n" +
 "`th!song [name]` - get info about song: name, rating, votes, link, album, other stuff\n" +
 "`th!lyrics [song]` - get lyrics of song\n" +
-"`th!addsong [author] [album] [song name]` - add song\n" +
+isAdmin ? ("`th!addsong [author] [album] [song name]` - add song\n" +
 "`th!editsong [song id] [property] [value]` - edit song\n" +
-"`th!removesong [song id]` - remove song\n")
+"`th!removesong [song id]` - remove song\n") : "")
 };
 module.exports.aliases = ["?"];
