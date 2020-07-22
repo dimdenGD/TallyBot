@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const config = require("./config.json");
+const fetch = require("node-fetch");
 const fs = require("fs");
 const { types } = require("util");
 const db = require("./db.js");
@@ -40,6 +41,22 @@ bot.on("message", msg => {
         }
         if(msg.content.includes("dimden")) {
             msg.channel.send("dimden");
+        }
+        if(msg.content.includes("topic pls")) {
+            let collector = new Discord.MessageCollector(msg.channel, m => m.author.bot, {time: 5000});
+            let topicpls = false;
+            collector.on("collect", () => {
+                topicpls = true;
+                collector.stop();
+            });
+            collector.on("end", () => {
+                if(!topicpls) {
+                    fetch("https://www.conversationstarters.com/random.php").then(i => i.text()).then(i => {
+                        i = i.slice(39);
+                        msg.channel.send(`boris is dead so i'm here :pleading_face:\n${i}`);
+                    })
+                }
+            })
         }
     }
     const args = msg.content.split(" ");
