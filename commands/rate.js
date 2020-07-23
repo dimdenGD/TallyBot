@@ -17,7 +17,7 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
 
     let embed = new Discord.RichEmbed()
         .setTitle(`${sd.name} rating`)
-        .setDescription(`Successfully ${rate === "INSERT" ? "rated song" : "updated rating of"} \`${sd.name}\` ${rate === "INSERT" ? "with" : "to"} \`${rating}\`!`)
+        .setDescription(`Successfully ${rate === "INSERT" ? "rated song" : "updated rating of"} \`[#${sd.id}] ${sd.author} - ${sd.album} - ${sd.name}\` ${rate === "INSERT" ? "with" : "to"} \`${rating}\`!`)
         .setColor("#55ff55")
         .setAuthor(msg.author.tag, msg.author.displayAvatarURL);
 

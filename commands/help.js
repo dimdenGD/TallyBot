@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = (msg, args, bot, db, isAdmin) => {
 	msg.channel.send("`[arg]` - required, `<arg>` - optional.\n" +
 "\n" +
+"`th!album [album]` - get info about album." +
 "`th!vote [song]` - add +1 to all votes (every 24 hours).\n" +
 "`th!rate [1-10] [song]` - rate song from 1 to 10.\n" +
 "`th!votes <page>` - top of songs by vote count (every page has 10 songs)\n" +

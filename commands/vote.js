@@ -15,10 +15,9 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
 
 	let embed = new Discord.RichEmbed()
 		.setTitle(`${sd.name} vote`)
-		.setDescription(`Successfully voted for \`${sd.name}\`!`)
+		.setDescription(`Successfully voted for \`[#${sd.id}] ${sd.author} - ${sd.album} - ${sd.name}\`!`)
 		.setColor("#55ff55")
 		.setAuthor(msg.author.tag, msg.author.displayAvatarURL);
-
 	msg.channel.send(embed);
 };
 module.exports.aliases = [];
