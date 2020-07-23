@@ -25,6 +25,7 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
     if(album.toLowerCase() === "mmmm") album = "Marvin's Marvelous Mechanical Museum";
     if(album.toLowerCase() === "mmmm05") album = "Marvin's Marvelous Mechanical Museum 2005";
     if(album.toLowerCase() === "g&e") album = "Good & Evil";
+    if(album.toLowerCase().includes("good a")) album = "Good & Evil";
     if(album.toLowerCase() === "hp:ii") album = "Hawaii: Part II";
     if(album.toLowerCase() === "hpii") album = "Hawaii Partii";
     if(album.toLowerCase() === "jh") album = "Joe Hawley";

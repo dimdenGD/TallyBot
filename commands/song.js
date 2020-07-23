@@ -36,7 +36,7 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
 		.setColor("RANDOM")
 		.setAuthor(msg.author.tag, msg.author.displayAvatarURL)
 		.addField("Votes", sd.votes, true)
-		.addField("Rating", `${db.getRating(sd.id)} ${myrating?"(You: "+myrating.rating+")":""}`, true)
+		.addField("Rating", `${db.getRating(sd.id)} ⭐ ${myrating?"(You: "+myrating.rating+" ⭐)":""}`, true)
 		.addField("_ _", "_ _", true)
 	if(sd.lyrics) embed.description += `\nLyrics are available. (\`th!lyrics ${sd.id}\`)`;
 	if(sd.link) embed.addField("Link", sd.link, true);
