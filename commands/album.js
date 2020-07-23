@@ -35,6 +35,7 @@ module.exports.run = (msg, args, bot, db, isAdmin) => {
     let songs = db.db.prepare("select * from songs where lower(album) LIKE ? || '%'").all(album);
     if(!songs.length || !args[0]) throw "Album was not found... :pleading_face:";
     album = songs[0].album;
+    if(album === "Single") throw "Album was not found... :pleading_face:"
     let votes = songs.map(i => i.votes).reduce(reducer);
     let rates = [];
 
