@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 
 module.exports.run = (msg, args, bot, db, isAdmin) => {
 	if(!isAdmin) throw "You're not allowed to use this command!";
-	if(!args[2]) throw "Usage: \`th!edit-song [id] [property] [value]\`. Properties: name, votes, album, link, thumb, lyrics";
-	let id = +args[0], property = args[1], value = args.slice(2).join(" ");
+	if(!args[1]) throw "Usage: \`th!edit-song [id] [property] [value]\`. Properties: name, votes, album, link, thumb, lyrics";
+	let id = +args[0], property = args[1], value = args[2] ? args.slice(2).join(" ") : null;
 	if(isNaN(id)) throw "Usage: \`th!edit-song [id] [property] [value]\`. Properties: name, votes, album, link, thumb, lyrics";
 
 	let edit = db.editSong(id, property, value);

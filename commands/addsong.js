@@ -15,6 +15,7 @@ module.exports.run = async (msg, args, bot, db, isAdmin) => {
 	let album = args[1].replace(/_/g," ");
 	let name = args.slice(2).join(" ");
 	if(album === "null" || album === "undefined" || album === "0" || album === "none") album = undefined;
+	// Albums
 	if(album.toLowerCase() === "mmmm") album = "Marvin's Marvelous Mechanical Museum";
 	if(album.toLowerCase() === "mmmm05") album = "Marvin's Marvelous Mechanical Museum 2005";
 	if(album.toLowerCase() === "g&e") album = "Good & Evil";
@@ -22,6 +23,13 @@ module.exports.run = async (msg, args, bot, db, isAdmin) => {
 	if(album.toLowerCase() === "hpii") album = "Hawaii Partii";
 	if(album.toLowerCase() === "jh") album = "Joe Hawley";
 	if(album.toLowerCase() === "nat") album = "Not a Trampoline";
+	if(album.toLowerCase() === "cd") album = "Complete Demos";
+	if(album.toLowerCase() === "aid") album = "Admittedly Incomplete Demos";
+	// Artists
+	if(author.toLowerCase() === "th") author = "Tally Hall";
+	if(author.toLowerCase() === "mm") author = "ミラクルミュージカル";
+	if(author.toLowerCase() === "jh") author = "Joe Hawley";
+	if(author.toLowerCase() === "rc") author = "Rob Cantor";
 
 	let song = db.createDefaultSong(name);
 	db.db.prepare("update songs set author = ?, album = ? where id = ?").run(author, album, song);
@@ -55,6 +63,15 @@ module.exports.run = async (msg, args, bot, db, isAdmin) => {
 		case "Hawaii Partii":
 			db.db.prepare("update songs set thumb = ? where id = ?")
 			.run("https://img.discogs.com/NUngERklqnPGm6ttR9Q0Jo1kcyc=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7921293-1451707090-8720.jpeg.jpg", song);
+			break;
+		case "Complete Demos":
+			db.db.prepare("update songs set thumb = ? where id = ?")
+				.run("https://f4.bcbits.com/img/a4011324453_16.jpg", song);
+			break;
+		case "Admittedly Incomplete Demos":
+			db.db.prepare("update songs set thumb = ? where id = ?")
+				.run("https://f4.bcbits.com/img/a1776666211_16.jpg", song);
+			break;
 	}
 	let message, link, lyrics;
 	let embed = new Discord.RichEmbed()

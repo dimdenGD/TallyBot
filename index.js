@@ -32,6 +32,7 @@ bot.on("ready", () => {
     bot.user.setActivity("https://dimden.dev/");
 });
 
+bot.on("error", () => {});
 bot.on("message", msg => {
 	if(msg.author.id === bot.user.id) return;
     if(msg.guild.id !== "503244758966337546") {
